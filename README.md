@@ -24,7 +24,7 @@ npm install benchmark
 > time -p /bin/bash -c 'rm -rf node_modules/* && npm install'
 ```
 
-## docker with mounted volume
+## docker without mounted volume
 
 ```console
 > docker-compose build
@@ -37,7 +37,7 @@ npm install benchmark
 When mounting node_modules as data volume, the directory is locked. As a result, when npm ci tries to delete node_modules, an error occurs...
 
 ```console
-> docker-compose run --rm node npm ci
+> docker-compose -f docker-compose.yml run --rm node npm ci
 npm WARN prepare removing existing node_modules/ before installation
 npm ERR! path /app/node_modules
 npm ERR! code EBUSY
